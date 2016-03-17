@@ -14,16 +14,22 @@ class Cluster
 {
 
     /**
+     * Cluster id
+     *
      * @var int
      */
     private $_id = null;
 
     /**
+     * Cluster token
+     *
      * @var string
      */
     private $_token = null;
 
     /**
+     * Parent Rpc object
+     *
      * @var Rpc
      */
     private $_rpc = null;
@@ -43,6 +49,8 @@ class Cluster
     }
 
     /**
+     * Returns cluster id
+     *
      * @return int
      */
     public function getId()
@@ -51,6 +59,8 @@ class Cluster
     }
 
     /**
+     * Returns cluster token
+     *
      * @return string
      */
     public function getToken()
@@ -59,6 +69,8 @@ class Cluster
     }
 
     /**
+     * Returns parent Rpc object
+     *
      * @return Rpc
      */
     public function getRpc()
@@ -67,6 +79,8 @@ class Cluster
     }
 
     /**
+     * Returns Settings api client
+     *
      * @return SettingsClient
      */
     public function settings()
@@ -75,6 +89,8 @@ class Cluster
     }
 
     /**
+     * Returns Processes api client
+     *
      * @return ProcessesClient
      */
     public function processes()
