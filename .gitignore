@@ -1,0 +1,5 @@
+.idea
+vendor
+output
+docs/phpdoc-cache-*
+docs/structure.xml
