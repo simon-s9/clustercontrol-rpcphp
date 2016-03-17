@@ -3,3 +3,4 @@ vendor
 output
 docs/phpdoc-cache-*
 docs/structure.xml
+test/test.php
