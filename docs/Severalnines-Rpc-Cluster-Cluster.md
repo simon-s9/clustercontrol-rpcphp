@@ -21,7 +21,7 @@ Properties
 
     private integer $_id = null
 
-
+Cluster id
 
 
 
@@ -32,7 +32,7 @@ Properties
 
     private string $_token = null
 
-
+Cluster token
 
 
 
@@ -43,7 +43,7 @@ Properties
 
     private \Severalnines\Rpc $_rpc = null
 
-
+Parent Rpc object
 
 
 
@@ -76,7 +76,7 @@ Cluster constructor.
 
     integer Severalnines\Rpc\Cluster\Cluster::getId()
 
-
+Returns cluster id
 
 
 
@@ -89,7 +89,7 @@ Cluster constructor.
 
     string Severalnines\Rpc\Cluster\Cluster::getToken()
 
-
+Returns cluster token
 
 
 
@@ -102,7 +102,7 @@ Cluster constructor.
 
     \Severalnines\Rpc Severalnines\Rpc\Cluster\Cluster::getRpc()
 
-
+Returns parent Rpc object
 
 
 
@@ -115,7 +115,7 @@ Cluster constructor.
 
     \Severalnines\Rpc\Cluster\Client\SettingsClient Severalnines\Rpc\Cluster\Cluster::settings()
 
-
+Returns Settings api client
 
 
 
@@ -127,6 +127,32 @@ Cluster constructor.
 ### processes
 
     \Severalnines\Rpc\Cluster\Client\ProcessesClient Severalnines\Rpc\Cluster\Cluster::processes()
+
+Returns Processes api client
+
+
+
+* Visibility: **public**
+
+
+
+
+### operationalReports
+
+    \Severalnines\Rpc\Cluster\Client\OperationalReportsClient Severalnines\Rpc\Cluster\Cluster::operationalReports()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
+### operationalReportsSchedules
+
+    \Severalnines\Rpc\Cluster\Client\OperationalReportsSchedulesClient Severalnines\Rpc\Cluster\Cluster::operationalReportsSchedules()
 
 
 

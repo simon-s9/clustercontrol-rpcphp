@@ -6,6 +6,8 @@ API Index
         * Severalnines\Rpc\Cluster
             * Severalnines\Rpc\Cluster\Client
                 * [AbstractClient](Severalnines-Rpc-Cluster-Client-AbstractClient.md)
+                * [OperationalReportsClient](Severalnines-Rpc-Cluster-Client-OperationalReportsClient.md)
+                * [OperationalReportsSchedulesClient](Severalnines-Rpc-Cluster-Client-OperationalReportsSchedulesClient.md)
                 * [ProcessesClient](Severalnines-Rpc-Cluster-Client-ProcessesClient.md)
                 * [SettingsClient](Severalnines-Rpc-Cluster-Client-SettingsClient.md)
             * [Cluster](Severalnines-Rpc-Cluster-Cluster.md)
