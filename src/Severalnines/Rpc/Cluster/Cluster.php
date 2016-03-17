@@ -2,6 +2,8 @@
 namespace Severalnines\Rpc\Cluster;
 
 use Severalnines\Rpc;
+use Severalnines\Rpc\Cluster\Client\JobsClient;
+use Severalnines\Rpc\Cluster\Client\LogClient;
 use Severalnines\Rpc\Cluster\Client\OperationalReportsClient;
 use Severalnines\Rpc\Cluster\Client\OperationalReportsSchedulesClient;
 use Severalnines\Rpc\Cluster\Client\ProcessesClient;
@@ -114,6 +116,22 @@ class Cluster
     public function operationalReportsSchedules()
     {
         return (new OperationalReportsSchedulesClient($this, 'reports'));
+    }
+
+    /**
+     * @return LogClient
+     */
+    public function log()
+    {
+        return (new LogClient($this, 'log'));
+    }
+
+    /**
+     * @return JobsClient
+     */
+    public function jobs()
+    {
+        return (new JobsClient($this, 'job'));
     }
 
 }
