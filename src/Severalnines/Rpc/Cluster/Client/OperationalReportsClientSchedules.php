@@ -1,6 +1,8 @@
 <?php
 namespace Severalnines\Rpc\Cluster\Client;
 
+use Severalnines\Rpc\Net\Request;
+
 /**
  * Class OperationalReportsClient
  *
@@ -22,11 +24,7 @@ class OperationalReportsSchedulesClient
      */
     public function get()
     {
-        return $this->request(
-            array(
-                'operation' => 'schedules'
-            )
-        );
+        return $this->request(new Request('schedules'));
     }
 
     /**
@@ -42,14 +40,13 @@ class OperationalReportsSchedulesClient
      */
     public function schedule($reportType = self::REPORT_DEFAULT, $userName, $schedule, array $recipients = array())
     {
+        $request = new Request('addschedule');
         return $this->request(
-            array(
-                'operation'  => 'addschedule',
-                'name'       => $reportType,
-                'username'   => $userName,
-                'schedule'   => $schedule,
-                'recipients' => implode(',', $recipients),
-            )
+            $request
+                ->set('name', $reportType)
+                ->set('username', $userName)
+                ->set('schedule', $schedule)
+                ->set('recipients', implode(',', $recipients))
         );
     }
 
@@ -63,12 +60,8 @@ class OperationalReportsSchedulesClient
      */
     public function delete($reportId)
     {
-        return $this->request(
-            array(
-                'operation' => 'removeschedule',
-                'id'        => $reportId,
-            )
-        );
+        $request = new Request('removeschedule');
+        return $this->request($request->set('id', $reportId));
     }
 
 }

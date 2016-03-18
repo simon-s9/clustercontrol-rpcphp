@@ -1,12 +1,12 @@
-Severalnines\Rpc\Cluster\Client\ProcessesClient
+Severalnines\Rpc\Cluster\Client\JobsClient
 ===============
 
-Class ProcessesClient
+Class JobsClient
 
 
 
 
-* Class name: ProcessesClient
+* Class name: JobsClient
 * Namespace: Severalnines\Rpc\Cluster\Client
 * Parent class: [Severalnines\Rpc\Cluster\Client\AbstractClient](Severalnines-Rpc-Cluster-Client-AbstractClient.md)
 
@@ -44,35 +44,9 @@ Methods
 -------
 
 
-### top
+### get
 
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\ProcessesClient::top()
-
-
-
-
-
-* Visibility: **public**
-
-
-
-
-### managedProcesses
-
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\ProcessesClient::managedProcesses()
-
-
-
-
-
-* Visibility: **public**
-
-
-
-
-### toggleManaged
-
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\ProcessesClient::toggleManaged($hostname, $executable, $managed)
+    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\JobsClient::get(integer $limit)
 
 
 
@@ -82,9 +56,58 @@ Methods
 
 
 #### Arguments
-* $hostname **mixed**
-* $executable **mixed**
-* $managed **mixed**
+* $limit **integer**
+
+
+
+### create
+
+    mixed Severalnines\Rpc\Cluster\Client\JobsClient::create($ip, $userName, $userId, array $job)
+
+
+
+
+
+* Visibility: **public**
+
+
+#### Arguments
+* $ip **mixed**
+* $userName **mixed**
+* $userId **mixed**
+* $job **array**
+
+
+
+### status
+
+    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\JobsClient::status($id)
+
+
+
+
+
+* Visibility: **public**
+
+
+#### Arguments
+* $id **mixed**
+
+
+
+### messages
+
+    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\JobsClient::messages($id)
+
+
+
+
+
+* Visibility: **public**
+
+
+#### Arguments
+* $id **mixed**
 
 
 

@@ -1,6 +1,8 @@
 <?php
 namespace Severalnines\Rpc\Cluster\Client;
 
+use Severalnines\Rpc\Net\Request;
+
 /**
  * Class LogClient
  *
@@ -16,11 +18,7 @@ class LogClient
      */
     public function get()
     {
-        return $this->request(
-            array(
-                'operation' => 'list',
-            )
-        );
+        return $this->request(new Request('list'));
     }
 
     /**
@@ -33,13 +31,12 @@ class LogClient
      */
     public function contents($hostname, $filename, $limit = 5)
     {
+        $request = new Request('contents');
         return $this->request(
-            array(
-                'operation' => 'contents',
-                'hostname'  => $hostname,
-                'filename'  => $filename,
-                'limit'     => $limit,
-            )
+            $request
+                ->set('hostname', $hostname)
+                ->set('filename', $filename)
+                ->set('limit', $limit)
         );
     }
 

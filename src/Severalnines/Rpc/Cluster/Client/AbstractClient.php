@@ -4,6 +4,7 @@ namespace Severalnines\Rpc\Cluster\Client;
 use Curl\Curl;
 
 use Severalnines\Rpc\Cluster\Cluster;
+use Severalnines\Rpc\Net\Request;
 use Severalnines\Rpc\Net\Response;
 use Severalnines\Rpc\Exception\Exception;
 
@@ -46,6 +47,13 @@ abstract class AbstractClient
     }
 
     /**
+     * @return \Severalnines\Rpc
+     */
+    protected function getRpc(){
+        return $this->getCluster()->getRpc();
+    }
+
+    /**
      * @return string
      */
     protected function getPath()
@@ -54,23 +62,19 @@ abstract class AbstractClient
     }
 
     /**
-     * @param array $data
+     * @param Request $requestData
      *
      * @return Response
      * @throws Exception
      */
-    protected function request(array $data = array())
+    protected function request(Request $requestData)
     {
-        $data = array_merge(
-            $data,
-            array(
-                'clusterid' => $this->getCluster()->getId(),
-                'token'     => $this->getCluster()->getToken(),
-            )
-        );
+        $requestData
+            ->setClusterId($this->getCluster()->getId())
+            ->setToken($this->getCluster()->getToken());
         $request = new Curl();
         $request->setHeader('Content-Type', 'application/json');
-        $request->post($this->buildUrl(), json_encode($data));
+        $request->post($this->buildUrl(), json_encode($requestData));
         if ($request->curl_error) {
             throw new Exception('Failed to fetch data: ' . $request->curl_error_message, $request->curl_error_code);
         }
@@ -83,11 +87,11 @@ abstract class AbstractClient
     private function buildUrl()
     {
         $url = 'http';
-        if ($this->getCluster()->getRpc()->isUseSSL()) {
+        if ($this->getRpc()->isUseSSL()) {
             $url = 'https';
         }
-        $url .= '://' . $this->getCluster()->getRpc()->getHost()
-            . ':' . $this->getCluster()->getRpc()->getPort()
+        $url .= '://' . $this->getRpc()->getHost()
+            . ':' . $this->getRpc()->getPort()
             . '/' . $this->getCluster()->getId()
             . '/' . $this->getPath();
         return $url;

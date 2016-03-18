@@ -32,6 +32,11 @@ class Response
     private $_total = 0;
 
     /**
+     * @var string
+     */
+    private $_error = null;
+
+    /**
      * Response constructor.
      *
      * @param array $rpcResponse
@@ -57,6 +62,9 @@ class Response
         }
         if (array_key_exists('total', $rpcResponse)) {
             $this->_total = $rpcResponse['total'];
+        }
+        if (array_key_exists('errorString', $rpcResponse)) {
+            $this->_error = $rpcResponse['errorString'];
         }
     }
 
@@ -98,6 +106,14 @@ class Response
     public function getTotal()
     {
         return $this->_total;
+    }
+
+    /**
+     * @return string
+     */
+    public function getError()
+    {
+        return $this->_error;
     }
 
     /**

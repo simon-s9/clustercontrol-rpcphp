@@ -1,6 +1,8 @@
 <?php
 namespace Severalnines\Rpc\Cluster\Client;
 
+use Severalnines\Rpc\Net\Request;
+
 /**
  * Class SettingsClient
  *
@@ -18,11 +20,7 @@ class SettingsClient
      */
     public function get()
     {
-        return $this->request(
-            array(
-                'operation' => 'list',
-            )
-        );
+        return $this->request(new Request('list'));
     }
 
     /**
@@ -36,12 +34,11 @@ class SettingsClient
      */
     public function set($key, $value)
     {
+        $request = new Request('set');
         return $this->request(
-            array(
-                'operation' => 'set',
-                'key'       => $key,
-                'value'     => $value,
-            )
+            $request
+                ->set('key', $key)
+                ->set('value', $value)
         );
     }
 
@@ -58,14 +55,13 @@ class SettingsClient
      */
     public function setLicense($email, $company, $expires, $key)
     {
+        $request = new Request('setLicense');
         return $this->request(
-            array(
-                'operation' => 'setLicense',
-                'email'     => $email,
-                'company'   => $company,
-                'exp_date'  => $expires,
-                'lickey'    => $key,
-            )
+            $request
+                ->set('email', $email)
+                ->set('company', $company)
+                ->set('exp_date', $expires)
+                ->set('lickey', $key)
         );
     }
 
@@ -77,11 +73,7 @@ class SettingsClient
      */
     public function generateToken()
     {
-        return $this->request(
-            array(
-                'operation' => 'generateToken',
-            )
-        );
+        return $this->request(new Request('generateToken'));
     }
 
 }

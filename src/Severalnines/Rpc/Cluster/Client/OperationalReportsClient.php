@@ -1,5 +1,7 @@
 <?php
-namespace Severalnines\Rpc\Cluster\Client;
+namespace Severalnines\Rpc\Cluster\Clien;
+
+use Severalnines\Rpc\Net\Request;
 
 /**
  * Class OperationalReportsClient
@@ -22,11 +24,7 @@ class OperationalReportsClient
      */
     public function get()
     {
-        return $this->request(
-            array(
-                'operation' => 'listreports'
-            )
-        );
+        return $this->request(new Request('listreports'));
     }
 
     /**
@@ -41,13 +39,12 @@ class OperationalReportsClient
      */
     public function generate($reportType = self::REPORT_DEFAULT, $userName, array $recipients = array())
     {
+        $request = new Request('generatereport');
         return $this->request(
-            array(
-                'operation'  => 'generatereport',
-                'name'       => $reportType,
-                'username'   => $userName,
-                'recipients' => implode(',', $recipients),
-            )
+            $request
+                ->set('name', $reportType)
+                ->set('username', $userName)
+                ->set('recipients', implode(',', $recipients))
         );
     }
 
@@ -61,12 +58,8 @@ class OperationalReportsClient
      */
     public function delete($reportId)
     {
-        return $this->request(
-            array(
-                'operation' => 'deletereport',
-                'id'        => $reportId,
-            )
-        );
+        $request = new Request('deletereport');
+        return $this->request($request->set('id', $reportId));
     }
 
 }

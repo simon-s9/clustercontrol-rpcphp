@@ -72,6 +72,17 @@ Properties
 * Visibility: **private**
 
 
+### $_error
+
+    private string $_error = null
+
+
+
+
+
+* Visibility: **private**
+
+
 Methods
 -------
 
@@ -147,6 +158,19 @@ Response constructor.
 ### getTotal
 
     integer Severalnines\Rpc\Net\Response::getTotal()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
+### getError
+
+    string Severalnines\Rpc\Net\Response::getError()
 
 
 

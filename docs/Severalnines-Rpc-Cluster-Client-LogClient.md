@@ -1,12 +1,12 @@
-Severalnines\Rpc\Cluster\Client\ProcessesClient
+Severalnines\Rpc\Cluster\Client\LogClient
 ===============
 
-Class ProcessesClient
+Class LogClient
 
 
 
 
-* Class name: ProcessesClient
+* Class name: LogClient
 * Namespace: Severalnines\Rpc\Cluster\Client
 * Parent class: [Severalnines\Rpc\Cluster\Client\AbstractClient](Severalnines-Rpc-Cluster-Client-AbstractClient.md)
 
@@ -44,22 +44,9 @@ Methods
 -------
 
 
-### top
+### get
 
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\ProcessesClient::top()
-
-
-
-
-
-* Visibility: **public**
-
-
-
-
-### managedProcesses
-
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\ProcessesClient::managedProcesses()
+    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\LogClient::get()
 
 
 
@@ -70,9 +57,9 @@ Methods
 
 
 
-### toggleManaged
+### contents
 
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\ProcessesClient::toggleManaged($hostname, $executable, $managed)
+    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\LogClient::contents($hostname, $filename, integer $limit)
 
 
 
@@ -83,8 +70,8 @@ Methods
 
 #### Arguments
 * $hostname **mixed**
-* $executable **mixed**
-* $managed **mixed**
+* $filename **mixed**
+* $limit **integer**
 
 
 

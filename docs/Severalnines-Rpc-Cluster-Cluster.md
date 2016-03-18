@@ -162,3 +162,29 @@ Returns Processes api client
 
 
 
+
+### log
+
+    \Severalnines\Rpc\Cluster\Client\LogClient Severalnines\Rpc\Cluster\Cluster::log()
+
+
+
+
+
+* Visibility: **public**
+
+
+
+
+### jobs
+
+    \Severalnines\Rpc\Cluster\Client\JobsClient Severalnines\Rpc\Cluster\Cluster::jobs()
+
+
+
+
+
+* Visibility: **public**
+
+
+

@@ -74,6 +74,19 @@ AbstractClient constructor.
 
 
 
+### getRpc
+
+    \Severalnines\Rpc Severalnines\Rpc\Cluster\Client\AbstractClient::getRpc()
+
+
+
+
+
+* Visibility: **protected**
+
+
+
+
 ### getPath
 
     string Severalnines\Rpc\Cluster\Client\AbstractClient::getPath()
@@ -89,7 +102,7 @@ AbstractClient constructor.
 
 ### request
 
-    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\AbstractClient::request(array $data)
+    \Severalnines\Rpc\Net\Response Severalnines\Rpc\Cluster\Client\AbstractClient::request(\Severalnines\Rpc\Net\Request $requestData)
 
 
 
@@ -99,7 +112,7 @@ AbstractClient constructor.
 
 
 #### Arguments
-* $data **array**
+* $requestData **[Severalnines\Rpc\Net\Request](Severalnines-Rpc-Net-Request.md)**
 
 
 

@@ -1,6 +1,8 @@
 <?php
 namespace Severalnines\Rpc\Cluster\Client;
 
+use Severalnines\Rpc\Net\Request;
+
 /**
  * Class JobsClient
  *
@@ -18,12 +20,8 @@ class JobsClient
      */
     public function get($limit = 5)
     {
-        return $this->request(
-            array(
-                'operation' => 'getJobs',
-                'limit'     => $limit,
-            )
-        );
+        $request = new Request('getJobs');
+        return $this->request($request->set('limit', $limit));
     }
 
     /**
@@ -36,14 +34,13 @@ class JobsClient
      */
     public function create($ip, $userName, $userId, array $job)
     {
+        $request = new Request('createJob');
         $this->request(
-            array(
-                'operation' => 'createJob',
-                'ip'        => $ip,
-                'username'  => $userName,
-                'userId'    => $userId,
-                'job'       => $job,
-            )
+            $request
+                ->set('ip', $ip)
+                ->set('username', $userName)
+                ->set('userId', $userId)
+                ->set('job', $job)
         );
     }
 
@@ -55,12 +52,8 @@ class JobsClient
      */
     public function status($id)
     {
-        return $this->request(
-            array(
-                'operation' => 'getStatus',
-                'jobId'     => $id,
-            )
-        );
+        $request = new Request('getStatus');
+        return $this->request($request->set('jobId', $id));
     }
 
     /**
@@ -71,12 +64,8 @@ class JobsClient
      */
     public function messages($id)
     {
-        return $this->request(
-            array(
-                'operation' => 'getJobMessages',
-                'jobId'     => $id,
-            )
-        );
+        $request = new Request('getJobMessages');
+        return $this->request($request->set('jobId', $id));
     }
 
 }

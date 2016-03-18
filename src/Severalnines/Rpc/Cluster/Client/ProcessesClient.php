@@ -1,6 +1,8 @@
 <?php
 namespace Severalnines\Rpc\Cluster\Client;
 
+use Severalnines\Rpc\Net\Request;
+
 /**
  * Class ProcessesClient
  *
@@ -18,11 +20,7 @@ class ProcessesClient
      */
     public function top()
     {
-        return $this->request(
-            array(
-                'operation' => 'top',
-            )
-        );
+        return $this->request(new Request('top'));
     }
 
     /**
@@ -33,11 +31,7 @@ class ProcessesClient
      */
     public function managedProcesses()
     {
-        return $this->request(
-            array(
-                'operation' => 'managedProcesses',
-            )
-        );
+        return $this->request(new Request('managedProcesses'));
     }
 
     /**
@@ -52,13 +46,12 @@ class ProcessesClient
      */
     public function toggleManaged($hostname, $executable, $managed)
     {
+        $request = new Request('toggleManaged');
         return $this->request(
-            array(
-                'operation'  => 'toggleManaged',
-                'hostname'   => $hostname,
-                'executable' => $executable,
-                'managed'    => $managed,
-            )
+            $request
+                ->set('hostname', $hostname)
+                ->set('executable', $executable)
+                ->set('managed', $managed)
         );
     }
 
