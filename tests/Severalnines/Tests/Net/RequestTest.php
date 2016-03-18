@@ -39,18 +39,18 @@ class RequestTest
         $this->assertNotEquals($request->get('anotherKey'), 'anotherValue');
 
         $request = new Request('testOperation');
-        $request->someKey = 'someValue';
-        $this->assertEquals($request->someKey, 'someValue');
-        $this->assertNotEquals($request->someKey, 'anotherValue');
+        $request->__set('someKey', 'someValue');
+        $this->assertEquals($request->__get('someKey'), 'someValue');
+        $this->assertNotEquals($request->__get('someKey'), 'anotherValue');
 
         $request = new Request('testOperation');
-        $request->anotherKey = 'someValue';
-        $this->assertEquals($request->anotherKey, 'someValue');
-        $this->assertNotEquals($request->anotherKey, 'anotherKeyValue');
+        $request->__set('anotherKey', 'someValue');
+        $this->assertEquals($request->__get('anotherKey'), 'someValue');
+        $this->assertNotEquals($request->__get('anotherKey'), 'anotherKeyValue');
 
-        $this->assertEquals(isset($request->anotherKey), true);
-        unset($request->anotherKey);
-        $this->assertEquals($request->anotherKey, null);
+        $this->assertTrue($request->__isset('anotherKey'));
+        $request->__unset('anotherKey');
+        $this->assertNull($request->__get('anotherKey'));
     }
 
     /**
