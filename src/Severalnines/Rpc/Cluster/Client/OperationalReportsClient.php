@@ -1,5 +1,5 @@
 <?php
-namespace Severalnines\Rpc\Cluster\Clien;
+namespace Severalnines\Rpc\Cluster\Client;
 
 use Severalnines\Rpc\Net\Request;
 
