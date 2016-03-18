@@ -1,6 +1,7 @@
 <?php
 namespace Severalnines\Tests\Net;
 
+use Severalnines\Tests\Test;
 use Severalnines\Rpc\Net\Request;
 
 /**
@@ -8,8 +9,8 @@ use Severalnines\Rpc\Net\Request;
  *
  * @package Severalnines\Tests\Net
  */
-class RequestTest extends
-    \PHPUnit_Framework_TestCase
+class RequestTest
+    extends Test
 {
 
     public function testOperation()
@@ -65,6 +66,20 @@ class RequestTest extends
         $this->assertEquals($request->get(Request::KEY_TOKEN), null);
         $request->setToken('abc');
         $this->assertEquals($request->get(Request::KEY_TOKEN), 'abc');
+    }
+
+    public function testOperationDefined()
+    {
+        $request = new Request('testOperation');
+        $this->assertEquals(
+            $this->invokeMethod($request, '_operationDefined'),
+            true
+        );
+        $request->remove(Request::KEY_OPERATION);
+        $this->assertEquals(
+            $this->invokeMethod($request, '_operationDefined'),
+            false
+        );
     }
 
 }

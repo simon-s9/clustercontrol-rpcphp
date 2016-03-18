@@ -10,7 +10,7 @@ use Severalnines\Rpc\Exception\Exception;
  * @package Severalnines\Tests
  */
 class RpcTest
-    extends \PHPUnit_Framework_TestCase
+    extends Test
 {
 
     /**
