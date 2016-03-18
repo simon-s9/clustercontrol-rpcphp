@@ -57,6 +57,7 @@ class RpcTest
 
     /**
      * @throws Exception
+     * @expectedException \Severalnines\Rpc\Exception\Exception
      */
     public function testCluster()
     {
@@ -68,7 +69,6 @@ class RpcTest
         );
         $this->assertInstanceOf('Severalnines\\Rpc\\Cluster\\Cluster', $rpc->cluster(0));
         $this->assertInstanceOf('Severalnines\\Rpc\\Cluster\\Cluster', $rpc->cluster(1));
-        $this->expectException(Exception::class);
         $rpc->cluster(2);
     }
 
