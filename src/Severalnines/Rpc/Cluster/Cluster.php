@@ -8,6 +8,7 @@ use Severalnines\Rpc\Cluster\Client\OperationalReportsClient;
 use Severalnines\Rpc\Cluster\Client\OperationalReportsSchedulesClient;
 use Severalnines\Rpc\Cluster\Client\ProcessesClient;
 use Severalnines\Rpc\Cluster\Client\SettingsClient;
+use Severalnines\Rpc\Cluster\Client\StatsClient;
 
 /**
  * Class Cluster
@@ -132,6 +133,14 @@ class Cluster
     public function jobs()
     {
         return (new JobsClient($this, 'job'));
+    }
+
+    /**
+     * @return StatsClient
+     */
+    public function stat()
+    {
+        return (new StatsClient($this,'stat'));
     }
 
 }

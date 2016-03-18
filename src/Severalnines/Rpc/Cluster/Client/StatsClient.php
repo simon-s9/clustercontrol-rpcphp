@@ -8,7 +8,7 @@ use Severalnines\Rpc\Net\Request;
  *
  * @package Severalnines\Rpc\Cluster\Client
  */
-class Stats
+class StatsClient
     extends AbstractClient
 {
 

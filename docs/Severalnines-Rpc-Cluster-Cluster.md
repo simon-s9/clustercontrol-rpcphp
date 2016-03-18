@@ -188,3 +188,16 @@ Returns Processes api client
 
 
 
+
+### stat
+
+    \Severalnines\Rpc\Cluster\Client\StatsClient Severalnines\Rpc\Cluster\Cluster::stat()
+
+
+
+
+
+* Visibility: **public**
+
+
+
