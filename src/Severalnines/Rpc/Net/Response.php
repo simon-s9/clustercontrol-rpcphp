@@ -43,9 +43,9 @@ class Response
      *
      * @throws Exception
      */
-    public function __construct(array $rpcResponse)
+    public function __construct(array $rpcResponse = array())
     {
-        if (!is_array($rpcResponse)) {
+        if (!is_array($rpcResponse) || sizeof($rpcResponse) === 0) {
             throw new Exception('Failed to parse RPC response');
         }
         if (array_key_exists('requestStatus', $rpcResponse)) {

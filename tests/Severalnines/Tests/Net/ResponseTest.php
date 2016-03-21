@@ -159,6 +159,83 @@ JSON;
 }
 JSON;
 
+    protected $clustersJson
+        = <<<JSON
+{
+    "cc_timestamp": 1458547657,
+    "clusters": [
+    {
+        "clusterAutorecovery": true,
+        "configFile": "/etc/cmon.d/cmon_1.cnf",
+        "id": 1,
+        "logFile": "/var/log/cmon_1.log",
+        "name": "cluster_1",
+        "nodeAutorecovery": true,
+        "running": true,
+        "status": 2,
+        "statusText": "Cluster started.",
+        "type": "galera"
+    },
+    {
+        "clusterAutorecovery": true,
+        "configFile": "/etc/cmon.d/cmon_2.cnf",
+        "id": 2,
+        "logFile": "/var/log/cmon_2.log",
+        "name": "cluster_2",
+        "nodeAutorecovery": true,
+        "running": true,
+        "status": 2,
+        "statusText": "Cluster started.",
+        "type": "replication"
+    },
+    {
+        "clusterAutorecovery": true,
+        "configFile": "/etc/cmon.d/cmon_3.cnf",
+        "id": 3,
+        "logFile": "/var/log/cmon_3.log",
+        "name": "cluster_3",
+        "nodeAutorecovery": true,
+        "running": true,
+        "status": 4,
+        "statusText": "Cluster degraded.",
+        "type": "mongodb"
+    },
+    {
+        "clusterAutorecovery": true,
+        "configFile": "/etc/cmon.d/cmon_4.cnf",
+        "id": 4,
+        "logFile": "/var/log/cmon_4.log",
+        "name": "cluster_4",
+        "nodeAutorecovery": true,
+        "running": true,
+        "status": 2,
+        "statusText": "Cluster started.",
+        "type": "postgresql_single"
+    },
+    {
+        "clusterAutorecovery": true,
+        "configFile": "/etc/cmon.d/cmon_5.cnf",
+        "id": 5,
+        "logFile": "/var/log/cmon_5.log",
+        "name": "cluster_5",
+        "nodeAutorecovery": true,
+        "running": true,
+        "status": 2,
+        "statusText": "Cluster started.",
+        "type": "mysql_single"
+    } ],
+    "info":
+    {
+        "hasLicense": true,
+        "licenseExpires": 1745,
+        "licenseStatus": "License found.",
+        "version": "1.3.0.1179"
+    },
+    "requestStatus": "ok"
+}
+JSON;
+
+
     /**
      * @return array|null
      */
@@ -173,6 +250,20 @@ JSON;
     protected function getBadResponseData()
     {
         return json_decode($this->badJson, true);
+    }
+
+    protected function getClustersResponseData()
+    {
+        return json_decode($this->clustersJson, true);
+    }
+
+    /**
+     * @expectedException \Severalnines\Rpc\Exception\Exception
+     */
+    public function testConstructor()
+    {
+        $response = new Response();
+        $response = new Response(array());
     }
 
     /**
@@ -202,7 +293,9 @@ JSON;
      */
     public function testGetClusters()
     {
-        // todo: this should be tested better
+        $response = new Response($this->getClustersResponseData());
+        $this->assertTrue($response->ok());
+        $this->assertNotEmpty($response->getClusters());
     }
 
     /**
