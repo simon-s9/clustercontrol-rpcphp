@@ -74,7 +74,7 @@ abstract class AbstractClient
             ->setToken($this->getCluster()->getToken());
         $request = new Curl();
         $request->setHeader('Content-Type', 'application/json');
-        $request->post($this->buildUrl(), json_encode($requestData));
+        $request->post($this->buildUrl(), $requestData->toJson());
         if ($request->curl_error) {
             throw new Exception('Failed to fetch data: ' . $request->curl_error_message, $request->curl_error_code);
         }

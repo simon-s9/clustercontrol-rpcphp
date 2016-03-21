@@ -11,8 +11,7 @@ use Severalnines\Rpc\Exception\Exception;
  * @package Severalnines\Rpc\Net
  */
 class Request
-    implements JsonSerializable,
-               Serializable
+    implements Serializable
 {
 
     const KEY_OPERATION = 'operation';
@@ -195,18 +194,11 @@ class Request
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     *
-     * @link  http://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     *        which is a value of any type other than a resource.
-     * @throws Exception
-     * @since 5.4.0
+     * @return string
      */
-    function jsonSerialize()
+    public function toJson()
     {
-        $this->_checkOperation();
-        return $this->_data;
+        return json_encode($this->_data);
     }
 
 }
