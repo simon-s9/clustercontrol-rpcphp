@@ -1,6 +1,7 @@
 {
   "name": "severalnines/rpcphp",
   "description": "Rpc library for Severalnines ClusterControl",
+  "license": "MIT",
   "authors": [
     {
       "name": "Simon Kamenetskiy",
@@ -17,7 +18,7 @@
     }
   },
   "require-dev": {
-    "evert/phpdoc-md" : "~0.2.0",
+    "evert/phpdoc-md": "~0.2.0",
     "phpdocumentor/phpdocumentor": "^2.8",
     "phpunit/phpunit": "^4.8"
   }
