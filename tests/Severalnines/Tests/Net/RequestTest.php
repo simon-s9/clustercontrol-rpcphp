@@ -140,7 +140,7 @@ class RequestTest
     public function testCheckJsonSerializer()
     {
         $request = new Request('testOperation');
-        $serialized = json_encode($request);
+        $serialized = $request->toJson();
         $this->assertEquals($serialized, '{"operation":"testOperation"}');
     }
 
