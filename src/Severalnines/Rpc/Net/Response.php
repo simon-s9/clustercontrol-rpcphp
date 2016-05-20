@@ -119,7 +119,7 @@ class Response
      */
     public function getJobs()
     {
-        return $this->_clusters;
+        return $this->_jobs;
     }
 
     /**
