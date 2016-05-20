@@ -27,6 +27,11 @@ class Response
     private $_clusters = array();
 
     /**
+     * @var array
+     */
+    private $_messages = array();
+
+    /**
      * @var int
      */
     private $_timestamp = null;
@@ -70,6 +75,9 @@ class Response
         if (array_key_exists('clusters', $rpcResponse)) {
             $this->_clusters = $rpcResponse['clusters'];
         }
+        if (array_key_exists('messages', $rpcResponse)) {
+            $this->_messages = $rpcResponse['messages'];
+        }
         if (array_key_exists('cc_timestamp', $rpcResponse)) {
             $this->_timestamp = $rpcResponse['cc_timestamp'];
         }
@@ -112,6 +120,14 @@ class Response
     public function getClusters()
     {
         return $this->_clusters;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMessages()
+    {
+        return $this->_messages;
     }
 
     /**
