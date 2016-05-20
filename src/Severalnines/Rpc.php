@@ -2,6 +2,7 @@
 namespace Severalnines;
 
 use Severalnines\Rpc\Cluster\Cluster;
+use Severalnines\Rpc\Clusters\Clusters;
 use Severalnines\Rpc\Exception\Exception;
 
 /**
@@ -87,6 +88,18 @@ class Rpc
             throw new Exception("Cluster {$clusterId} is not defined");
         }
         return $this->_clusters[$clusterId];
+    }
+
+    /**
+     * @return Clusters
+     */
+    public function clusters()
+    {
+        $token = null;
+        if (array_key_exists(0, $this->_clusters)) {
+            $token = $this->_clusters[0]->getToken();
+        }
+        return new Clusters($this, $token);
     }
 
     /**
